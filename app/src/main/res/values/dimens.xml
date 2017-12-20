@@ -1,0 +1,11 @@
+<resources>
+
+    <!--侧边字母索引-->
+    <dimen name="side_letter_bar_letter_size">10sp</dimen>
+    <dimen name="side_letter_bar_letter_bigsize">15sp</dimen>
+    <dimen name="side_letter_bar_clrcle_size">8sp</dimen>
+    <dimen name="side_letter_bar_width">36dp</dimen>
+
+    <dimen name="listview_hoverTitle_height">35dp</dimen>
+
+</resources>

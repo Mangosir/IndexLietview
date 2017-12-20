@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+            android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_letter"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listview_hoverTitle_height"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:background="@color/divider"
+        android:textColor="@color/overlay_text"
+        android:text="A"
+        android:paddingLeft="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_people"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:paddingLeft="16dp"
+            android:layout_weight="0.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="13sp"
+            android:textColor="@color/txt_value"
+            android:text="阿杰"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+        <TextView
+            android:id="@+id/tv_company"
+            android:layout_weight="1.5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="13sp"
+            android:textColor="@color/txt_value"
+            android:text="上古网络科技有限公司"
+            android:lines="1"
+            android:ellipsize="end"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <ImageView
+            android:id="@+id/iv_company"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_companyline"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/iv_company"
+            android:id="@+id/tv_companyname"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="公司热线："
+            android:textSize="12sp"
+            android:textColor="@color/txt_hint"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/tv_companyname"
+            android:id="@+id/tv_companynum"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:text="400-21343212"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_callcompany"
+            android:layout_toLeftOf="@+id/iv_copycompany"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copycompany"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <ImageView
+            android:id="@+id/iv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_phone"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:id="@+id/tv_phonename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="手机号码："
+            android:textSize="12sp"
+            android:layout_toRightOf="@+id/iv_phone"
+            android:textColor="@color/txt_hint"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/tv_phonename"
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:text="18012566354"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_callphone"
+            android:layout_toLeftOf="@+id/iv_copyphone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copyphone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <ImageView
+            android:id="@+id/iv_office"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_officeline"
+            android:layout_centerVertical="true"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/iv_office"
+            android:id="@+id/tv_officename"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="办公电话："
+            android:textSize="12sp"
+            android:textColor="@color/txt_hint"/>
+
+        <TextView
+            android:layout_toRightOf="@+id/tv_officename"
+            android:id="@+id/tv_office"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:text="400-21343212"
+            android:gravity="center"
+            android:textSize="12sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_calloffice"
+            android:layout_toLeftOf="@+id/iv_copyoffice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copyoffice"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="10px"
+        android:background="@color/divider"/>
+
+</LinearLayout>

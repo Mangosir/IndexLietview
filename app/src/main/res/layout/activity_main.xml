@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:etimg="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:fitsSystemWindows="true">
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/title_bg">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_back"
+            android:paddingLeft="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="检修通讯录"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_below="@+id/title"
+        android:id="@+id/ll_serach"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/edit_bg"
+        android:gravity="center"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <com.mangoer.indexlietview.view.EditTextWithImg
+            android:id="@+id/et_search"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/shape_search"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:textSize="13sp"
+            android:textColor="@color/txt_value"
+            etimg:edit_txtsize="12sp"
+            etimg:edit_txt="搜索"
+            etimg:edit_txtcolor="@color/letter_text"
+            />
+
+    </RelativeLayout>
+
+    <com.mangoer.indexlietview.view.SortListView
+        android:layout_below="@+id/ll_serach"
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:cacheColorHint="@android:color/transparent"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:listSelector="@android:color/transparent" />
+
+    <TextView
+        android:layout_below="@+id/ll_serach"
+        android:id="@+id/tv_hoverTitle"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/listview_hoverTitle_height"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        android:background="@color/divider"
+        android:textColor="@color/overlay_text"
+        android:text="A"
+        android:paddingLeft="16dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tv_letter_overlay"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/cp_overlay_bg"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:textSize="48sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+    <com.mangoer.indexlietview.view.SideLetterBar
+        android:layout_below="@+id/ll_serach"
+        android:id="@+id/side_letter_bar"
+        android:layout_width="@dimen/side_letter_bar_width"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        tools:ignore="RtlHardcoded"
+        android:layout_marginBottom="80dp"
+        android:layout_marginTop="80dp"/>
+
+</RelativeLayout>

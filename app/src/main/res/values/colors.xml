@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="cp_colorAccent">#008ed8</color>
+    <color name="cp_colorPrimary">@color/cp_colorAccent</color>
+    <color name="cp_colorPrimaryDark">@color/cp_colorAccent</color>
+
+    <color name="title_bg">#008ed8</color>
+
+    <color name="divider">#e3e3e3</color>
+    <color name="white">#ffffff</color>
+    <color name="letter_text">#8c8c8c</color>
+    <color name="letter_clrclr">#8ecc8b</color>
+
+    <color name="overlay_text">#CC646464</color>
+    
+    <color name="edit_bg">#adadad</color>
+
+    <color name="txt_hint">#848484</color>
+    <color name="txt_value">#5b5b5b</color>
+
+    <color name="txt_num">#008ed7</color>
+
+</resources>

@@ -1,0 +1,441 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/title_bg">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_back"
+            android:paddingLeft="15dp"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="检修通讯录"
+            android:textColor="@color/white"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:layout_centerInParent="true"/>
+
+        <ImageView
+            android:id="@+id/img_shot"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@mipmap/img_shot"
+            android:layout_alignParentRight="true"
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:text="张 伟"
+        android:layout_marginTop="15dp"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textSize="20dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:text="上古网络科技有限公司"
+        android:textColor="@color/txt_value"
+        android:gravity="center"
+        android:textSize="16dp"
+        />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_company"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_companyline"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_company"
+                android:id="@+id/tv_companyname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="公司服务热线："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt"
+            android:id="@+id/tv_companynum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="400-21343212"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_callcompany"
+            android:layout_toLeftOf="@+id/iv_copycompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="30dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copycompany"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_phone"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_phone"
+                android:id="@+id/tv_phonename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="手机号码："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt2"
+            android:id="@+id/tv_phonenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="18012958364"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_callphone"
+            android:layout_toLeftOf="@+id/iv_copyphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="30dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copyphone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_office"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_officeline"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_office"
+                android:id="@+id/tv_officename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="办公电话："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt3"
+            android:id="@+id/tv_officenum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="025-1002002536"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_calloffice"
+            android:layout_toLeftOf="@+id/iv_copyoffice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_callphone"
+            android:layout_marginRight="30dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copyoffice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_email"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_email"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_email"
+                android:id="@+id/tv_emailname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="个人邮箱："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt4"
+            android:id="@+id/tv_emailnum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="1002002536@qq.com"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textColor="@color/txt_num"/>
+
+        <ImageView
+            android:id="@+id/iv_sendemail"
+            android:layout_toLeftOf="@+id/iv_copyemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/img_sendemail"
+            android:layout_marginRight="30dp"/>
+
+        <ImageView
+            android:id="@+id/iv_copyemail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/img_copephone"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_time"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_time"
+                android:id="@+id/tv_timename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="最新维护时间："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt5"
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:text="2017-12-20 6:30:21"
+            android:gravity="center"
+            android:textSize="15sp"
+            android:textColor="@color/txt_num"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/divider"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:paddingLeft="26dp"
+        android:paddingRight="36dp">
+
+        <RelativeLayout
+            android:id="@+id/rl_txt6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/iv_remark"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/img_remarks"
+                android:layout_centerVertical="true"/>
+
+            <TextView
+                android:layout_toRightOf="@+id/iv_remark"
+                android:id="@+id/tv_markname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:gravity="center"
+                android:text="备注："
+                android:textSize="14sp"
+                android:textColor="@color/txt_hint"/>
+
+        </RelativeLayout>
+
+        <TextView
+            android:layout_below="@+id/rl_txt6"
+            android:id="@+id/tv_remark"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:textSize="18sp"
+            android:textColor="@color/txt_num"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

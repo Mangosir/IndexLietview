@@ -1,0 +1,42 @@
+在Android中，调用Email有三种类型的Intent： Intent.ACTION_SENDTO 无附件的发送 Intent.ACTION_SEND 带附件的发送 Intent.ACTION_SEND_MULTIPLE 带有多附件的发送
+
+使用SENTTO发送
+Intent data=new Intent(Intent.ACTION_SENDTO);
+data.setData(Uri.parse("mailto:way.ping.li@gmail.com"));
+data.putExtra(Intent.EXTRA_SUBJECT, "这是标题");
+data.putExtra(Intent.EXTRA_TEXT, "这是内容");
+startActivity(data);
+
+使用SEND发送
+Intent intent = new Intent(Intent.ACTION_SEND);
+String[] tos = { "1754575493@gmail.com" };
+String[] ccs = { "1754575493@gmail.com" };
+String[] bccs = {"1754575493@gmail.com"};
+intent.putExtra(Intent.EXTRA_EMAIL, tos);//收件者
+intent.putExtra(Intent.EXTRA_CC, ccs);//抄送者
+intent.putExtra(Intent.EXTRA_BCC, bccs);//密送者
+intent.putExtra(Intent.EXTRA_TEXT, "body");// 正文
+intent.putExtra(Intent.EXTRA_SUBJECT, "subject");// 主题
+intent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file:///mnt/sdcard/a.jpg"));//单个附件的发送
+intent.setType("image/*");// 设置附件格式
+intent.setType("message/rfc882");// 设置邮件格式
+Intent.createChooser(intent, "请选择邮件类应用");//弹出框提示标题
+startActivity(intent);
+
+使用SEND_MULTIPLE来进行多附件的发送
+Intent intent = new Intent(Intent.ACTION_SEND_MULTIPLE);
+String[] tos = { "1754575493@gmail.com" };
+String[] ccs = { "1754575493@gmail.com" };
+intent.putExtra(Intent.EXTRA_EMAIL, tos);
+intent.putExtra(Intent.EXTRA_CC, ccs);
+intent.putExtra(Intent.EXTRA_TEXT, "body");
+intent.putExtra(Intent.EXTRA_SUBJECT, "subject");
+ArrayList<uri> imageUris = new ArrayList<uri>();
+imageUris.add(Uri.parse("file:///mnt/sdcard/a.jpg"));
+imageUris.add(Uri.parse("file:///mnt/sdcard/b.jpg"));
+intent.putParcelableArrayListExtra(Intent.EXTRA_STREAM, imageUris);
+intent.setType("image/*");
+intent.setType("message/rfc882");
+Intent.createChooser(intent, "请选择邮件类应用");
+startActivity(intent);
+
