@@ -8,6 +8,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,12 +56,13 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
             @Override
             public void onLetterChanged(String letter) {
                 int position = peopleAdapter.getLetterPosition(letter);
-                Log.e("SortListviewAct","letter="+letter+",position="+position);
                 listview.setSelection(position);
+                tv_hoverTitle.setVisibility(View.VISIBLE);
+                tv_hoverTitle.setText(letter);
             }
         });
 
-        //让listview与edittext，字母列表，悬停view互动
+        //让listview与edittext，侧边字母列表，悬停view互动
         listview.setTv_hoverTitle(tv_hoverTitle);
         listview.setEditText(editText);
         listview.setSide_letterbar(side_letterbar);
@@ -207,7 +209,6 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
                 Log.e("复制", "content=" + content);
             }
         } else {
-
             startActivity(new Intent(this,PeopleDetailAct.class));
         }
     }

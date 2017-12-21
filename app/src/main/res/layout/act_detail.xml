@@ -107,7 +107,7 @@
             android:layout_toLeftOf="@+id/iv_copycompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/img_callphone"
+            android:src="@mipmap/img_callphone_big"
             android:layout_marginRight="30dp"/>
 
         <ImageView
@@ -115,7 +115,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/img_copephone"/>
+            android:src="@mipmap/img_copephone_big"/>
 
     </RelativeLayout>
 
@@ -177,7 +177,7 @@
             android:layout_toLeftOf="@+id/iv_copyphone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/img_callphone"
+            android:src="@mipmap/img_callphone_big"
             android:layout_marginRight="30dp"/>
 
         <ImageView
@@ -185,7 +185,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/img_copephone"/>
+            android:src="@mipmap/img_copephone_big"/>
 
     </RelativeLayout>
 
@@ -247,7 +247,7 @@
             android:layout_toLeftOf="@+id/iv_copyoffice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/img_callphone"
+            android:src="@mipmap/img_callphone_big"
             android:layout_marginRight="30dp"/>
 
         <ImageView
@@ -255,7 +255,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/img_copephone"/>
+            android:src="@mipmap/img_copephone_big"/>
 
     </RelativeLayout>
 
@@ -325,7 +325,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:src="@mipmap/img_copephone"/>
+            android:src="@mipmap/img_copephone_big"/>
 
     </RelativeLayout>
 

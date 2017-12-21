@@ -96,7 +96,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/img_callphone"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="15dp"/>
 
         <ImageView
             android:id="@+id/iv_copycompany"
@@ -149,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/img_callphone"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="15dp"/>
 
         <ImageView
             android:id="@+id/iv_copyphone"
@@ -198,11 +198,12 @@
 
         <ImageView
             android:id="@+id/iv_calloffice"
-            android:layout_toLeftOf="@+id/iv_copyoffice"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:src="@mipmap/img_callphone"
-            android:layout_marginRight="10dp"/>
+            android:layout_marginRight="10dp"
+            android:layout_toLeftOf="@+id/iv_copyoffice"
+            android:layout_marginEnd="15dp"/>
 
         <ImageView
             android:id="@+id/iv_copyoffice"
