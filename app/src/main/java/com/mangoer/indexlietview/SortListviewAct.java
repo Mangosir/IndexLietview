@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,18 +50,9 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        //侧边字母表与悬浮view联动
         side_letterbar.setOverlay(tv_overlay);
-        side_letterbar.setOnLetterChangedListener(new SideLetterBar.OnLetterChangedListener() {
-            @Override
-            public void onLetterChanged(String letter) {
-                int position = peopleAdapter.getLetterPosition(letter);
-                listview.setSelection(position);
-                tv_hoverTitle.setVisibility(View.VISIBLE);
-                tv_hoverTitle.setText(letter);
-            }
-        });
-
-        //让listview与edittext，侧边字母列表，悬停view互动
+        //让listview与edittext，侧边字母列表，顶部悬停view互动
         listview.setTv_hoverTitle(tv_hoverTitle);
         listview.setEditText(editText);
         listview.setSide_letterbar(side_letterbar);
