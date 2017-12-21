@@ -31,8 +31,31 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
     private boolean isScroll;//是否滑动listview
     private boolean isChackLetterBar;//是否手动选中侧边字母表
 
+    public SortListView(Context context) {
+        super(context);
+        initListener();
+    }
+
+    public SortListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        initListener();
+    }
+
+    public SortListView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initListener();
+    }
+
+    private void initListener(){
+        setOnScrollListener(this);
+    }
+
     public void setTv_hoverTitle(TextView tv_hoverTitle) {
         this.tv_hoverTitle = tv_hoverTitle;
+    }
+
+    public void setEditText(EditTextWithImg editText) {
+        this.editText = editText;
     }
 
     public void setSide_letterbar(final SideLetterBar side_letterbar) {
@@ -55,39 +78,16 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
         });
     }
 
-    public void setEditText(EditTextWithImg editText) {
-        this.editText = editText;
-    }
-
-    public SortListView(Context context) {
-        super(context);
-        initListener();
-    }
-
-    public SortListView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        initListener();
-    }
-
-    public SortListView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        initListener();
-    }
-
-    private void initListener(){
-        setOnScrollListener(this);
-    }
-
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         int action = ev.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN :
-                //当手开始触摸屏幕时候才进行联动
+                //当手开始触摸屏幕时候才进行联动 避免刚初始化就绘制报错
                 isScroll = true;
                 break;
             case MotionEvent.ACTION_MOVE :
-                //当手开始滑动屏幕时解除字母表选中状态
+                //当手开始滑动屏幕时解除手动选中字母表行为
                 isChackLetterBar = false;
                 break;
         }
@@ -116,7 +116,6 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
 
         People p = (People) getAdapter().getItem(firstVisibleItem);
         if (p == null) return;
-
         String py = p.getPinyin();
 
         int top = Math.abs(getChildAt(0).getTop());//选取当前屏幕可见的第一个item距离顶部距离
