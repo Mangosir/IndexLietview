@@ -50,11 +50,7 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
                 int position = peopleAdapter.getLetterPosition(letter);
                 setSelection(position);
                 //然后绘制侧边字母表选中状态
-                if (TextUtils.equals("#", letter)) {
-                    side_letterbar.drawA_ZCircle(letter);
-                } else {
-                    side_letterbar.drawA_ZCircle(letter.toUpperCase());
-                }
+                side_letterbar.drawA_ZCircle(letter);
             }
         });
     }
