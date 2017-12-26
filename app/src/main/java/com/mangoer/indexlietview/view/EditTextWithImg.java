@@ -11,7 +11,6 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.MotionEvent;
-import android.view.inputmethod.InputMethodManager;
 
 import com.mangoer.indexlietview.R;
 
@@ -24,7 +23,6 @@ import com.mangoer.indexlietview.R;
 public class EditTextWithImg extends AppCompatEditText {
 
     private Bitmap searchBitmap;
-    private Bitmap undoBitmap;
 
     private float txtSize;
     private int  txtColor;
@@ -34,21 +32,15 @@ public class EditTextWithImg extends AppCompatEditText {
     private int width;
     private float searchLeft;
     private float searchTop ;
-    private float undoLeft ;
-    private float undoTop  ;
 
     private Paint txtPaint;
 
     private boolean isInput;
 
-    UnDoListener unDoListener;
+    private InputListener inputListener;
 
-    /**
-     * 撤销接口
-     * @param unDoListener
-     */
-    public void setUnDoListener(UnDoListener unDoListener) {
-        this.unDoListener = unDoListener;
+    public void setInputListener(InputListener inputListener) {
+        this.inputListener = inputListener;
     }
 
     /**
@@ -58,6 +50,17 @@ public class EditTextWithImg extends AppCompatEditText {
         if (TextUtils.isEmpty(getText().toString().trim())) {
             isInput = false;
         }
+        invalidate();
+    }
+
+    /**
+     * 设置edittext是否获取焦点
+     * @param isInput
+     */
+    public void setInputMode(Boolean isInput){
+        this.isInput = isInput;
+        setFocusable(isInput);
+        setFocusableInTouchMode(isInput);
         invalidate();
     }
 
@@ -94,9 +97,6 @@ public class EditTextWithImg extends AppCompatEditText {
         super.onAttachedToWindow();
         if (searchBitmap == null)
             searchBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.img_search);
-
-        if (undoBitmap == null)
-            undoBitmap = BitmapFactory.decodeResource(getResources(),R.mipmap.img_undo);
     }
 
     @Override
@@ -107,8 +107,6 @@ public class EditTextWithImg extends AppCompatEditText {
 
         searchLeft = width / 2 - searchBitmap.getWidth() - dpToPx(1);
         searchTop = height / 2 - searchBitmap.getHeight() / 2 + dpToPx(1);
-        undoLeft = width - undoBitmap.getWidth() - dpToPx(10);
-        undoTop = height / 2 - undoBitmap.getHeight() / 2 ;
     }
 
     @Override
@@ -120,9 +118,6 @@ public class EditTextWithImg extends AppCompatEditText {
             if (searchBitmap != null) {
                 canvas.drawBitmap(searchBitmap, searchLeft, searchTop, null);
             }
-        } else {
-            //当开始点击输入框进行搜索时 绘制删除图标
-            canvas.drawBitmap(undoBitmap, undoLeft, undoTop, null);
         }
     }
 
@@ -131,49 +126,28 @@ public class EditTextWithImg extends AppCompatEditText {
         super.onDetachedFromWindow();
         if (searchBitmap != null && !searchBitmap.isRecycled())
             searchBitmap.recycle();
-        if (undoBitmap != null && !undoBitmap.isRecycled())
-            undoBitmap.recycle();
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
         int action = event.getAction();
         switch (action) {
             case MotionEvent.ACTION_DOWN:
                 //当手开始点击时，获取焦点，清空初始状态
                 setInputMode(true);
-                break;
-            case MotionEvent.ACTION_UP :
-                float x = event.getX();
-                //如果手离开屏幕的时候在撤销图标范围内，就回调
-                if (x >= undoLeft + 10 && unDoListener != null) {
-                    setText("");
-                    setInputMode(false);
-                    //隐藏软键盘
-                    InputMethodManager manager = (InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
-                    if (manager.isActive()) {
-                        manager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,InputMethodManager.HIDE_NOT_ALWAYS);
-                    }
-                    unDoListener.unDoClick();
-                    return true;
+                if (inputListener != null) {
+                    inputListener.inputBegin();
                 }
+                break;
         }
         return super.onTouchEvent(event);
-    }
-
-    private void setInputMode(Boolean isInput){
-        this.isInput = isInput;
-        setFocusable(isInput);
-        setFocusableInTouchMode(isInput);
-        invalidate();
     }
 
     private int dpToPx(int dp) {
         return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, getResources().getDisplayMetrics());
     }
 
-    public interface UnDoListener{
-        void unDoClick();
+    public interface InputListener{
+       void inputBegin();
     }
 }

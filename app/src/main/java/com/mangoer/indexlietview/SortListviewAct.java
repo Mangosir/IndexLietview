@@ -10,6 +10,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +29,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 import static android.content.Intent.ACTION_DIAL;
 
@@ -41,6 +45,8 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
     TextView tv_overlay;
     @Bind(R.id.side_letter_bar)
     SideLetterBar side_letterbar;
+    @Bind(R.id.img_undo)
+    ImageView img_undo;
 
     List<People> peopleList = new ArrayList<>();
     List<People> peopleSearchList = new ArrayList<>();
@@ -67,19 +73,17 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
 
     public void setListener(){
 
-        editText.setUnDoListener(new EditTextWithImg.UnDoListener() {
+        editText.setInputListener(new EditTextWithImg.InputListener() {
             @Override
-            public void unDoClick() {
-                if (peopleList.size() != 0) {
-                    peopleAdapter.setPeopleList(peopleList);
-                    peopleAdapter.notifyDataSetChanged();
-                }
+            public void inputBegin() {
+                img_undo.setVisibility(View.VISIBLE);
             }
         });
 
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
             }
 
             @Override
@@ -88,6 +92,7 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
 
             @Override
             public void afterTextChanged(Editable s) {
+
                 String msg = s.toString().trim();
                 //在这里进行模糊搜索，我这只是举例，实际上可能是去数据库或者服务器去查
                 /*Iterator<People> iterator = peopleList.iterator();
@@ -108,6 +113,25 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
                 }
             }
         });
+    }
+
+    /**
+     * 当点击撤销的时候，恢复初始状态
+     */
+    @OnClick(R.id.img_undo)
+    public void clickUndo(){
+        img_undo.setVisibility(View.GONE);
+        editText.setText("");
+        editText.setInputMode(false);
+        //隐藏软键盘
+        InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        if (manager.isActive()) {
+            manager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,InputMethodManager.HIDE_NOT_ALWAYS);
+        }
+        if (peopleList.size() != 0) {
+            peopleAdapter.setPeopleList(peopleList);
+            peopleAdapter.notifyDataSetChanged();
+        }
     }
 
     private void initdata() {

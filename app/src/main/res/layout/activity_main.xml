@@ -41,21 +41,40 @@
         android:focusable="true"
         android:focusableInTouchMode="true">
 
-        <com.mangoer.indexlietview.view.EditTextWithImg
-            android:id="@+id/et_search"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/shape_search"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:textSize="13sp"
-            android:textColor="@color/txt_value"
-            etimg:edit_txtsize="12sp"
-            etimg:edit_txt="搜索"
-            etimg:edit_txtcolor="@color/letter_text"
-            />
+            android:layout_marginBottom="8dp">
+
+            <com.mangoer.indexlietview.view.EditTextWithImg
+                android:layout_toLeftOf="@+id/img_undo"
+                android:id="@+id/et_search"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="13sp"
+                android:textColor="@color/txt_value"
+                android:background="@drawable/shape_search"
+                etimg:edit_txtsize="12sp"
+                etimg:edit_txt="搜索"
+                etimg:edit_txtcolor="@color/letter_text"/>
+
+            <ImageView
+                android:id="@+id/img_undo"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@mipmap/img_undo"
+                android:layout_centerVertical="true"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:visibility="gone"/>
+
+        </RelativeLayout>
+
 
     </RelativeLayout>
 
