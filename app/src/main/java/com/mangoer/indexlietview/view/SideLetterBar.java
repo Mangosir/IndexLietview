@@ -28,32 +28,19 @@ public class SideLetterBar extends View {
 
     private static LinkedHashMap<String,Integer> indexMap = new LinkedHashMap<>();
     static {
-        indexMap.put("A",0);
-        indexMap.put("B",1);
-        indexMap.put("C",2);
-        indexMap.put("D",3);
-        indexMap.put("E",4);
-        indexMap.put("F",5);
-        indexMap.put("G",6);
-        indexMap.put("H",7);
-        indexMap.put("I",8);
-        indexMap.put("J",9);
-        indexMap.put("K",10);
-        indexMap.put("L",11);
-        indexMap.put("M",12);
-        indexMap.put("N",13);
-        indexMap.put("O",14);
-        indexMap.put("P",15);
-        indexMap.put("Q",16);
-        indexMap.put("R",17);
-        indexMap.put("S",18);
-        indexMap.put("T",19);
-        indexMap.put("U",20);
-        indexMap.put("V",21);
-        indexMap.put("W",22);
-        indexMap.put("X",23);
-        indexMap.put("Y",24);
-        indexMap.put("Z",25);
+        indexMap.put("A",0);indexMap.put("B",1);
+        indexMap.put("C",2);indexMap.put("D",3);
+        indexMap.put("E",4);indexMap.put("F",5);
+        indexMap.put("G",6);indexMap.put("H",7);
+        indexMap.put("I",8);indexMap.put("J",9);
+        indexMap.put("K",10);indexMap.put("L",11);
+        indexMap.put("M",12);indexMap.put("N",13);
+        indexMap.put("O",14);indexMap.put("P",15);
+        indexMap.put("Q",16);indexMap.put("R",17);
+        indexMap.put("S",18);indexMap.put("T",19);
+        indexMap.put("U",20);indexMap.put("V",21);
+        indexMap.put("W",22);indexMap.put("X",23);
+        indexMap.put("Y",24);indexMap.put("Z",25);
         indexMap.put("#",26);
     }
 
@@ -96,6 +83,10 @@ public class SideLetterBar extends View {
         this.overlay = overlay;
     }
 
+    /**
+     * listview拖动时候 顶部第一个item定位到对应的字母
+     * @param letter
+     */
     public void drawA_ZCircle(String letter){
         if (TextUtils.isEmpty(letter)) return;
         choose = indexMap.get(letter);

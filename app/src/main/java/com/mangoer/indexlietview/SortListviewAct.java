@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,6 +43,7 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
     SideLetterBar side_letterbar;
 
     List<People> peopleList = new ArrayList<>();
+    List<People> peopleSearchList = new ArrayList<>();
     PeopleAdapter peopleAdapter;
     ClipboardManager clipboardManager;
 
@@ -58,6 +61,53 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
         listview.setSide_letterbar(side_letterbar);
 
         initdata();
+
+        setListener();
+    }
+
+    public void setListener(){
+
+        editText.setUnDoListener(new EditTextWithImg.UnDoListener() {
+            @Override
+            public void unDoClick() {
+                if (peopleList.size() != 0) {
+                    peopleAdapter.setPeopleList(peopleList);
+                    peopleAdapter.notifyDataSetChanged();
+                }
+            }
+        });
+
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                String msg = s.toString().trim();
+                //在这里进行模糊搜索，我这只是举例，实际上可能是去数据库或者服务器去查
+                /*Iterator<People> iterator = peopleList.iterator();
+                while (iterator.hasNext()){
+                    p = iterator.next();
+                }*/
+                peopleSearchList.clear();
+                for (int i=0; i<peopleList.size(); i++) {
+                    People p = peopleList.get(i);
+                    if (p.getName().contains(msg)) {
+                        peopleSearchList.add(p);
+                    }
+                }
+
+                if (peopleSearchList.size() != 0) {
+                    peopleAdapter.setPeopleList(peopleSearchList);
+                    peopleAdapter.notifyDataSetChanged();
+                }
+            }
+        });
     }
 
     private void initdata() {
