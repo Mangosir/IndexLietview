@@ -36,6 +36,7 @@ public class EditTextWithImg extends AppCompatEditText {
     private Paint txtPaint;
 
     private boolean isInput;
+    private boolean isNeedDraw ;
 
     private InputListener inputListener;
 
@@ -47,10 +48,12 @@ public class EditTextWithImg extends AppCompatEditText {
      * 当listview进行滑动时，要判断下输入框有无内容，没有就恢复初始状态
      */
     public void setInput() {
-        if (TextUtils.isEmpty(getText().toString().trim())) {
-            isInput = false;
+        if (TextUtils.isEmpty(getText().toString().trim()) && isNeedDraw) {
+            setInputMode(false);
+            if (inputListener != null) {
+                inputListener.inputOver();
+            }
         }
-        invalidate();
     }
 
     /**
@@ -59,6 +62,7 @@ public class EditTextWithImg extends AppCompatEditText {
      */
     public void setInputMode(Boolean isInput){
         this.isInput = isInput;
+        isNeedDraw = isInput;
         setFocusable(isInput);
         setFocusableInTouchMode(isInput);
         invalidate();
@@ -149,5 +153,6 @@ public class EditTextWithImg extends AppCompatEditText {
 
     public interface InputListener{
        void inputBegin();
+        void inputOver();
     }
 }

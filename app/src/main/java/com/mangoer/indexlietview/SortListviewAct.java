@@ -11,7 +11,6 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -78,6 +77,11 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
             public void inputBegin() {
                 img_undo.setVisibility(View.VISIBLE);
             }
+
+            @Override
+            public void inputOver() {
+                img_undo.setVisibility(View.GONE);
+            }
         });
 
         editText.addTextChangedListener(new TextWatcher() {
@@ -123,11 +127,6 @@ public class SortListviewAct extends AppCompatActivity implements PeopleAdapter.
         img_undo.setVisibility(View.GONE);
         editText.setText("");
         editText.setInputMode(false);
-        //隐藏软键盘
-        InputMethodManager manager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-        if (manager.isActive()) {
-            manager.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT,InputMethodManager.HIDE_NOT_ALWAYS);
-        }
         if (peopleList.size() != 0) {
             peopleAdapter.setPeopleList(peopleList);
             peopleAdapter.notifyDataSetChanged();

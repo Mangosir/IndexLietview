@@ -99,8 +99,6 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
         //当滑动时，如果edittext没有输入内容 就清空焦点，恢复初始状态
         if (scrollState == AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL
                 && editText != null && TextUtils.isEmpty(editText.getText().toString().trim())) {
-            editText.setFocusable(false);
-            editText.setFocusableInTouchMode(false);
             editText.setInput();
         }
     }
