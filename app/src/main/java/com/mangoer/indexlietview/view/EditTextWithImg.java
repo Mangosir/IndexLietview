@@ -28,15 +28,15 @@ public class EditTextWithImg extends AppCompatEditText {
     private int  txtColor;
     private String txt;
 
-    private int height;
-    private int width;
-    private float searchLeft;
-    private float searchTop ;
+    private int height;//控件本身的高度
+    private int width;//控件本身的宽度
+    private float searchLeft;//搜索图片 距离控件左边的距离
+    private float searchTop ;//搜索图片距离控件顶部的距离
 
     private Paint txtPaint;
 
-    private boolean isInput;
-    private boolean isNeedDraw ;
+    private boolean isInput;//是否是手动开始输入
+    private boolean isNeedDraw ;//避免重复绘制
 
     private InputListener inputListener;
 
@@ -81,6 +81,7 @@ public class EditTextWithImg extends AppCompatEditText {
     }
 
     private void initResource(AttributeSet attrs) {
+        //自定义的一些属性 提示文字大小，颜色，内容
         TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.etimg);
         float density = getResources().getDisplayMetrics().density;//像素密度
         txtSize = typedArray.getDimension(R.styleable.etimg_edit_txtsize,11*density+0.5f);

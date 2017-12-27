@@ -2,7 +2,6 @@ package com.mangoer.indexlietview.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 import android.text.TextUtils;
 import android.util.AttributeSet;
@@ -26,6 +25,7 @@ public class SideLetterBar extends View {
     private static final String[] index = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L",
             "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z","#"};
 
+    //使用该Map，可以保存字母put进去的顺序
     private static LinkedHashMap<String,Integer> indexMap = new LinkedHashMap<>();
     static {
         indexMap.put("A",0);indexMap.put("B",1);
@@ -44,11 +44,13 @@ public class SideLetterBar extends View {
         indexMap.put("#",26);
     }
 
-    private int choose = -1;
+    private int choose = -1;//当前选中的字母的位置
+
     private Paint paint = new Paint();
     private Paint paintCircle = new Paint();
-    private boolean showBg = false;
+
     private OnLetterChangedListener onLetterChangedListener;
+
     private TextView overlay;
 
     private float circleradius ;
@@ -56,11 +58,11 @@ public class SideLetterBar extends View {
     private float textSize;
     private float textSize_Big;
     private int textColor;
-    private int textDeepColor;
+    private int textChooseColor;
 
-    private int height;
-    private int width;
-    private int singleHeight;
+    private int height;//控件高度
+    private int width;//控件宽度
+    private int singleHeight;//每个字母所占的高度
 
 
     public SideLetterBar(Context context, AttributeSet attrs, int defStyle) {
@@ -107,21 +109,19 @@ public class SideLetterBar extends View {
         textSize = getResources().getDimension(R.dimen.side_letter_bar_letter_size);
         textSize_Big = getResources().getDimension(R.dimen.side_letter_bar_letter_bigsize);
         textColor = getResources().getColor(R.color.letter_text);
-        textDeepColor = getResources().getColor(R.color.white);
+        textChooseColor = getResources().getColor(R.color.white);
     }
 
     @SuppressWarnings("deprecation")
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (showBg) {
-            canvas.drawColor(Color.TRANSPARENT);
-        }
 
         for (int i = 0; i < index.length; i++) {
             paint.setAntiAlias(true);
             if (i == choose) {
-                paint.setColor(textDeepColor);
+                //对选中字母进行单独绘制
+                paint.setColor(textChooseColor);
                 paint.setTextSize(textSize_Big);
                 paintCircle.setColor(circleColor);
                 paintCircle.setAntiAlias(true);
@@ -140,6 +140,11 @@ public class SideLetterBar extends View {
 
     }
 
+    /**
+     * 因为在Listview上方，所以当点击事件来的时候，直接return ，不进行向下分发
+     * @param event
+     * @return
+     */
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
         final int action = event.getAction();
@@ -149,16 +154,9 @@ public class SideLetterBar extends View {
 
         switch (action) {
             case MotionEvent.ACTION_DOWN:
-                showBg = true;
                 if (oldChoose != c && onLetterChangedListener != null) {
                     if (c >= 0 && c < index.length) {
-                        onLetterChangedListener.onLetterChanged(index[c]);
-                        choose = c;
-                        invalidate();
-                        if (overlay != null){
-                            overlay.setVisibility(VISIBLE);
-                            overlay.setText(index[c]);
-                        }
+                        changeLetterBar(c);
                     }
                 }
 
@@ -166,18 +164,11 @@ public class SideLetterBar extends View {
             case MotionEvent.ACTION_MOVE:
                 if (oldChoose != c && onLetterChangedListener != null) {
                     if (c >= 0 && c < index.length) {
-                        onLetterChangedListener.onLetterChanged(index[c]);
-                        choose = c;
-                        invalidate();
-                        if (overlay != null){
-                            overlay.setVisibility(VISIBLE);
-                            overlay.setText(index[c]);
-                        }
+                        changeLetterBar(c);
                     }
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                showBg = false;
                 choose = c;
                 invalidate();
                 if (overlay != null){
@@ -186,6 +177,17 @@ public class SideLetterBar extends View {
                 break;
         }
         return true;
+    }
+
+    private void changeLetterBar(int letterPosition) {
+        onLetterChangedListener.onLetterChanged(index[letterPosition]);
+        choose = letterPosition;
+        invalidate();
+        //设置悬浮view
+        if (overlay != null){
+            overlay.setVisibility(VISIBLE);
+            overlay.setText(index[letterPosition]);
+        }
     }
 
 

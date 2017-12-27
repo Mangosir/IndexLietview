@@ -22,9 +22,9 @@ public class SortListView extends ListView implements AbsListView.OnScrollListen
 
     private final String TAG = "SortListView";
 
-    private TextView tv_hoverTitle;
-    private EditTextWithImg editText;
-    private SideLetterBar side_letterbar;
+    private TextView tv_hoverTitle;//顶部悬停view
+    private EditTextWithImg editText;//顶部搜索view
+    private SideLetterBar side_letterbar;//侧边字母表
 
     private String lastPy;
 
